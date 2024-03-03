@@ -1,0 +1,5 @@
+name: LobbyManager
+version: 1.0
+api-version: 1.8.8
+author: Bearless
+main: fr.bearless.lobbymanager.Main
