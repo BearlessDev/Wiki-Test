@@ -1,11 +1,10 @@
-name: Hub
+name: LobbyManager
 version: 1.0
+api-version: 1.8.8
 author: Bearless
-main: fr.bearless.hub.Main
+main: fr.bearless.lobbymanager.Main
 
 commands:
-  gm:
-    description: "Permet de changer de Mode de Jeux rapidement."
-  spawn:
-    aliases: lobby
-    description: "Permet de se téléporter au spawn."
+  lobbymanager-reload:
+    aliases: lm-reload
+    description: Reload the configuration file

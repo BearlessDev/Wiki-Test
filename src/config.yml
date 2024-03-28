@@ -1,0 +1,52 @@
+#    _          _     _           __  __
+#   | |    ___ | |__ | |__  _   _|  \/  | __ _ _ __   __ _  __ _  ___ _ __
+#   | |   / _ \| '_ \| '_ \| | | | |\/| |/ _` | '_ \ / _` |/ _` |/ _ \ '__|
+#   | |__| (_) | |_) | |_) | |_| | |  | | (_| | | | | (_| | (_| |  __/ |
+#   |_____\___/|_.__/|_.__/ \__, |_|  |_|\__,_|_| |_|\__,_|\__, |\___|_|
+#                           |___/                          |___/           
+# By Bearless
+# Version: 1.0
+#
+#
+# LobbyManager Placeholder:
+#
+# %player% --> return the name of the player.
+#
+#
+
+usage-message:
+  reload: "&c&lIncorrect Usage: &c/lm-reload &c&lor &c/lobbymanager-reload"
+
+server:
+  disable_default_join_message: true
+  disable_default_quit_message: true
+
+  custom_join_message: "&a%player% &ejoin the lobby!"
+  custom_quit_message: "&a%player% &equit the lobby!"
+
+world:
+  block-break:
+    enable: true
+    permission: "lobbymanager.block.break"
+    permission-message: "&cSorry, but you can't break block."
+
+  block-place:
+    enable: true
+    permission: "lobbymanager.block.place"
+    permission-message: "&cSorry, but you can't place block."
+
+  disable-entity-spawn: true
+  disable-weather-change: true
+
+player:
+  disable_fall_damage: true
+  disable_food_loss: true
+
+  player_health_level: 20
+  player_food_level: 20
+
+commands:
+  reload:
+    permission: "lobbymanager.commands.reload"
+    permission-message: "&cYou don't have the required permission."
+    reload-message: "&aThe configuration file have been reloaded."

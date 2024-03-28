@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/BearlessServ - Hub.iml" filepath="$PROJECT_DIR$/BearlessServ - Hub.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LobbyManager.iml" filepath="$PROJECT_DIR$/LobbyManager.iml" />
     </modules>
   </component>
 </project>
