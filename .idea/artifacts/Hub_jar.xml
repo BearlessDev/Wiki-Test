@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Hub:jar">
+    <output-path>$PROJECT_DIR$/../../../../Documents/Plugin Spigot/Plugin by Me/BearlessServ</output-path>
+    <root id="archive" name="BearlessServ - Hub.jar">
+      <element id="module-output" name="BearlessServ - Hub" />
+    </root>
+  </artifact>
+</component>
