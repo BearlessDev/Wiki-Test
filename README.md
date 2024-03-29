@@ -1,3 +1,24 @@
+# LobbyManager v1.0
+
+### Description:
+LobbyManager is a plugin that allows you to easily configure your server lobby just through a single configuration file that is easy to understand and modify.
+
+## Commands:
+- /lm-reload or /lobbymanager-reload:
+    - Allows you to reload the configuration file after modifying it to avoid restarting the entire server.
+- /lm-spawn, /lobbymanager-spawn or /spawn:
+  - Allows you to go back to the spawn set on the config.yml file.
+
+## Permissions:
+- Reload Command:
+    - Default permission is: "lobbymanager.commands.reload" but you can change it on the config.yml file.
+- Spawn Command:
+  - This command don't require permission.
+
+## Configuration file:
+Here the config file of the plugin:
+
+```Yaml
 #    _          _     _           __  __
 #   | |    ___ | |__ | |__  _   _|  \/  | __ _ _ __   __ _  __ _  ___ _ __
 #   | |   / _ \| '_ \| '_ \| | | | |\/| |/ _` | '_ \ / _` |/ _` |/ _ \ '__|
@@ -57,7 +78,6 @@ player:
 
   enable_player_gamemode: true #Enable or Disable the gamemode of the player when joining the server.
   set_player_gamemode: "adventure" #The gamemode will be set to the player when joining the server.
-  #available Gamemode (creative, survival, adventure, spectator) *Case non-sensitive.
 
 commands: #List of all the Permission/Message of all the plugin command.
   reload:
@@ -66,3 +86,11 @@ commands: #List of all the Permission/Message of all the plugin command.
     reload-message: "&aThe configuration file have been reloaded." #The message send when the command successfully done.
   spawn:
     spawn_message: "§aYou have been teleported to the spawn."
+```
+
+## The Discord
+If you need help you can join the community server, and we will help you.
+
+Discord: <a href="https://discord.gg/BpfRew4aR6">https://discord.gg/BpfRew4aR6</a>
+
+[![forthebadge](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNDMuOTY4NzcyODg4MTgzNiIgaGVpZ2h0PSIzNSIgdmlld0JveD0iMCAwIDE0My45Njg3NzI4ODgxODM2IDM1Ij48cmVjdCB3aWR0aD0iODcuOTY4NzY1MjU4Nzg5MDYiIGhlaWdodD0iMzUiIGZpbGw9IiM0NTQ1NDUiLz48cmVjdCB4PSI4Ny45Njg3NjUyNTg3ODkwNiIgd2lkdGg9IjU2LjAwMDAwNzYyOTM5NDUzIiBoZWlnaHQ9IjM1IiBmaWxsPSIjMTgwOGQ3Ii8+PHRleHQgeD0iNDMuOTg0MzgyNjI5Mzk0NTMiIHk9IjIxLjUiIGZvbnQtc2l6ZT0iMTIiIGZvbnQtZmFtaWx5PSInUm9ib3RvJywgc2Fucy1zZXJpZiIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgbGV0dGVyLXNwYWNpbmc9IjIiPlZFUlNJT048L3RleHQ+PHRleHQgeD0iMTE1Ljk2ODc2OTA3MzQ4NjMzIiB5PSIyMS41IiBmb250LXNpemU9IjEyIiBmb250LWZhbWlseT0iJ01vbnRzZXJyYXQnLCBzYW5zLXNlcmlmIiBmaWxsPSIjRkZGRkZGIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXdlaWdodD0iOTAwIiBsZXR0ZXItc3BhY2luZz0iMiI+MS4xMDwvdGV4dD48L3N2Zz4=)](https://forthebadge.com)

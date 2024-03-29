@@ -1,13 +1,18 @@
 package fr.bearless.lobbymanager.listerners;
 
 import fr.bearless.lobbymanager.Main;
+import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityRegainHealthEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 public class PlayersEvent implements Listener {
@@ -30,6 +35,44 @@ public class PlayersEvent implements Listener {
 
         player.setHealth(plugin.getConfig().getInt("player.player_health_level"));
         player.setFoodLevel(plugin.getConfig().getInt("player.player_food_level"));
+
+        String world = plugin.getConfig().getString("world.spawn_world_name");
+        Double spawnX = plugin.getConfig().getDouble("world.spawn_X");
+        Double spawnY = plugin.getConfig().getDouble("world.spawn_Y");
+        Double spawnZ = plugin.getConfig().getDouble("world.spawn_Z");
+        int spawnYaw = plugin.getConfig().getInt("world.spawn_Yaw");
+        int spawnPitch = plugin.getConfig().getInt("world.spawn_Pitch");
+        Location loc = new Location(Bukkit.getWorld(world), spawnX, spawnY, spawnZ, spawnYaw, spawnPitch);
+
+        if(plugin.getConfig().getBoolean("world.enable_join_player_spawn_loc")) {
+            player.teleport(loc);
+        }
+
+        if(plugin.getConfig().getBoolean("player.enable_player_gamemode")){
+            player.setGameMode(GameMode.valueOf(plugin.getConfig().getString("player.set_player_gamemode").toUpperCase()));
+        }
+    }
+
+    @EventHandler
+    public void onMove(PlayerMoveEvent e){
+        Player player = e.getPlayer();
+
+        String world = plugin.getConfig().getString("world.spawn_world_name");
+        Double spawnX = plugin.getConfig().getDouble("world.spawn_X");
+        Double spawnY = plugin.getConfig().getDouble("world.spawn_Y");
+        Double spawnZ = plugin.getConfig().getDouble("world.spawn_Z");
+        int spawnYaw = plugin.getConfig().getInt("world.spawn_Yaw");
+        int spawnPitch = plugin.getConfig().getInt("world.spawn_Pitch");
+        Location loc = new Location(Bukkit.getWorld(world), spawnX, spawnY, spawnZ, spawnYaw, spawnPitch);
+
+        if(player.getLocation().getY() <=  plugin.getConfig().getInt("world.spawn_teleport_onFall")){
+            player.teleport(loc);
+        }
+    }
+    
+    @EventHandler
+    public void onDeath(PlayerDeathEvent e){
+        e.setDeathMessage("");
     }
 
     @EventHandler
