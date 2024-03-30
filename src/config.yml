@@ -18,13 +18,15 @@ usage-message:
   reload: "&c&lIncorrect Usage: &c/lm-reload &c&lor &c/lobbymanager-reload" #Message when you do the wrong reload command.
 
 server:
-  disable_default_join_message: true #Disable the default join message "Bearless_ joined the game".
-  disable_default_quit_message: true #Disable the default quit message "Bearless_ quit the game".
+  disable_default_join_message: true #Disable the default join message "Bearless joined the game".
+  disable_default_quit_message: true #Disable the default quit message "Bearless quit the game".
 
   custom_join_message: "&a%player% &ejoin the lobby!" #Replace the default join message by a custom one.
   custom_quit_message: "&a%player% &equit the lobby!" #Replace the default quit message by a custom one.
 
 world:
+  disable_pvp: true #Prevent players fromo pvp.
+
   block-break:
     enable: true #Disable the ability for the players to break block.
     permission: "lobbymanager.block.break" #The permission needed to break block.
@@ -46,7 +48,7 @@ world:
   spawn_Yaw: 180 #The YAW position of the custom spawn.
   spawn_Pitch: 0 #The PITCH position of the custom spawn.
 
-  spawn_teleport_onFall: 5 #When a player falls into the void, that position Y will be the point where the player will be teleported to the custom spawn.
+  teleport_onFall: 5 #When a player falls into the void, that position Y will be the point where the player will be teleported to the custom spawn.
 
 player:
   disable_fall_damage: true #Preventing player from taking fall damage.
@@ -58,6 +60,9 @@ player:
   enable_player_gamemode: true #Enable or Disable the gamemode of the player when joining the server.
   set_player_gamemode: "adventure" #The gamemode will be set to the player when joining the server.
   #available Gamemode (creative, survival, adventure, spectator) *Case non-sensitive.
+
+  tablist_header: "&aThis is a header\n &ewith a new lines" #Set the header of the tablist. TIP: type "\n" to get a new line.
+  tablist_footer: "&6This is a footer\n &2with a new lines" #Set the footer of the tablist. TIP: type "\n" to get a new line.
 
 commands: #List of all the Permission/Message of all the plugin command.
   reload:

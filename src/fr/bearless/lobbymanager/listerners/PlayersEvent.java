@@ -7,10 +7,7 @@ import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntityDamageEvent;
-import org.bukkit.event.entity.EntityRegainHealthEvent;
-import org.bukkit.event.entity.FoodLevelChangeEvent;
-import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.entity.*;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
@@ -28,8 +25,6 @@ public class PlayersEvent implements Listener {
         Player player = e.getPlayer();
 
         if(plugin.getConfig().getBoolean("server.disable_default_join_message")){
-            e.setJoinMessage("");
-        }else{
             e.setJoinMessage(plugin.getConfig().getString("server.custom_join_message").replace("&", "§").replaceAll("%player%", player.getName()));
         }
 
@@ -65,7 +60,7 @@ public class PlayersEvent implements Listener {
         int spawnPitch = plugin.getConfig().getInt("world.spawn_Pitch");
         Location loc = new Location(Bukkit.getWorld(world), spawnX, spawnY, spawnZ, spawnYaw, spawnPitch);
 
-        if(player.getLocation().getY() <=  plugin.getConfig().getInt("world.spawn_teleport_onFall")){
+        if(player.getLocation().getY() <=  plugin.getConfig().getInt("world.teleport_onFall")){
             player.teleport(loc);
         }
     }
@@ -79,10 +74,8 @@ public class PlayersEvent implements Listener {
     public void onQuit(PlayerQuitEvent e){
         Player player = e.getPlayer();
 
-        if(plugin.getConfig().getBoolean("server.disable_default_join_message")){
-            e.setQuitMessage("");
-        }else{
-            e.setQuitMessage(plugin.getConfig().getString("server.custom_join_message").replace("&", "§").replaceAll("%player%", player.getName()));
+        if(plugin.getConfig().getBoolean("server.disable_default_quit_message")){
+            e.setQuitMessage(plugin.getConfig().getString("server.custom_quit_message").replace("&", "§").replaceAll("%player%", player.getName()));
         }
     }
 
@@ -92,6 +85,17 @@ public class PlayersEvent implements Listener {
 
         if(plugin.getConfig().getBoolean("player.disable_fall_damage")){
             if(cause == EntityDamageEvent.DamageCause.FALL){
+                e.setCancelled(true);
+            }
+        }
+    }
+
+    @EventHandler
+    public void onPvP(EntityDamageByEntityEvent e){
+        EntityDamageEvent.DamageCause cause = e.getCause();
+
+        if(plugin.getConfig().getBoolean("world.disable_pvp")){
+            if(cause == EntityDamageEvent.DamageCause.ENTITY_ATTACK){
                 e.setCancelled(true);
             }
         }
