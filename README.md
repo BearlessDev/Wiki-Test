@@ -36,7 +36,7 @@ Here the config file of the plugin:
 #
 
 usage-message:
-  reload: "&c&lIncorrect Usage: &c/lm-reload &c&lor &c/lobbymanager-reload" #Message when you do the wrong reload command.
+  reload: "&c&lIncorrect Usage: &c/lm-reload &c&lor &c/lobbymanager-reload" #Message while you do the wrong reload command.
 
 server:
   disable_default_join_message: true #Disable the default join message "Bearless_ joined the game".
@@ -49,12 +49,12 @@ world:
   block-break:
     enable: true #Disable the ability for the players to break block.
     permission: "lobbymanager.block.break" #The permission needed to break block.
-    permission-message: "&cSorry, but you can't break block." #The message who appear when a player try to break a block without the permission.
+    permission-message: "&cSorry, but you can't break block." #The message who appear while a player try to break a block without the permission.
 
   block-place:
     enable: true #Disable the ability for the players to place block.
     permission: "lobbymanager.block.place" #The permission needed to place block.
-    permission-message: "&cSorry, but you can't place block." #The message who appear when a player try to place a block without the permission.
+    permission-message: "&cSorry, but you can't place block." #The message who appear while a player try to place a block without the permission.
 
   disable-entity-spawn: true #Disable the spawn of entity (Passive and Aggressive) like (Pig, Creeper, Zombie, Cow etc...).
   disable-weather-change: true #Disable the change of the weather.
@@ -67,23 +67,23 @@ world:
   spawn_Yaw: 180 #The YAW position of the custom spawn.
   spawn_Pitch: 0 #The PITCH position of the custom spawn.
 
-  spawn_teleport_onFall: 5 #When a player falls into the void, that position Y will be the point where the player will be teleported to the custom spawn.
+  spawn_teleport_onFall: 5 #while a player falls into the void, that position Y will be the point where the player will be teleported to the custom spawn.
 
 player:
   disable_fall_damage: true #Preventing player from taking fall damage.
   disable_food_loss: true #Preventing player from lost food.
 
-  player_health_level: 20 #Set the health of the player when joining the server.
-  player_food_level: 20 #Set the food of the player when joining the server.
+  player_health_level: 20 #Set the health of the player while joining the server.
+  player_food_level: 20 #Set the food of the player while joining the server.
 
-  enable_player_gamemode: true #Enable or Disable the gamemode of the player when joining the server.
-  set_player_gamemode: "adventure" #The gamemode will be set to the player when joining the server.
+  enable_player_gamemode: true #Enable or Disable the gamemode of the player while joining the server.
+  set_player_gamemode: "adventure" #The gamemode will be set to the player while joining the server.
 
 commands: #List of all the Permission/Message of all the plugin command.
   reload:
     permission: "lobbymanager.commands.reload" #The permission to do /lm-reload.
     permission-message: "&cYou don't have the required permission." #The message will be sent to the player who perform the command without the right permission.
-    reload-message: "&aThe configuration file have been reloaded." #The message send when the command successfully done.
+    reload-message: "&aThe configuration file have been reloaded." #The message send while the command successfully done.
   spawn:
     spawn_message: "§aYou have been teleported to the spawn."
 ```
