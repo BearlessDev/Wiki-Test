@@ -12,7 +12,6 @@
 #
 # %player% --> return the name of the player.
 #
-#
 
 commands: #List of all the Permission/Message of all the plugin command.
   reload:

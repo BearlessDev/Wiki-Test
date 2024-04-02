@@ -33,51 +33,6 @@ Here the config file of the plugin:
 #
 # %player% --> return the name of the player.
 #
-#
-
-usage-message:
-  reload: "&c&lIncorrect Usage: &c/lm-reload &c&lor &c/lobbymanager-reload" #Message while you do the wrong reload command.
-
-server:
-  disable_default_join_message: true #Disable the default join message "Bearless_ joined the game".
-  disable_default_quit_message: true #Disable the default quit message "Bearless_ quit the game".
-
-  custom_join_message: "&a%player% &ejoin the lobby!" #Replace the default join message by a custom one.
-  custom_quit_message: "&a%player% &equit the lobby!" #Replace the default quit message by a custom one.
-
-world:
-  block-break:
-    enable: true #Disable the ability for the players to break block.
-    permission: "lobbymanager.block.break" #The permission needed to break block.
-    permission-message: "&cSorry, but you can't break block." #The message who appear while a player try to break a block without the permission.
-
-  block-place:
-    enable: true #Disable the ability for the players to place block.
-    permission: "lobbymanager.block.place" #The permission needed to place block.
-    permission-message: "&cSorry, but you can't place block." #The message who appear while a player try to place a block without the permission.
-
-  disable-entity-spawn: true #Disable the spawn of entity (Passive and Aggressive) like (Pig, Creeper, Zombie, Cow etc...).
-  disable-weather-change: true #Disable the change of the weather.
-
-  enable_join_player_spawn_loc: true #enable or disable the custom spawn for player while joining the server.
-  spawn_world_name: "world" #The name of the world where the spawn will be set.
-  spawn_X: 0 #The X position of the custom spawn.
-  spawn_Y: 65 #The Y position of the custom spawn.
-  spawn_Z: 0 #The Z position of the custom spawn.
-  spawn_Yaw: 180 #The YAW position of the custom spawn.
-  spawn_Pitch: 0 #The PITCH position of the custom spawn.
-
-  spawn_teleport_onFall: 5 #while a player falls into the void, that position Y will be the point where the player will be teleported to the custom spawn.
-
-player:
-  disable_fall_damage: true #Preventing player from taking fall damage.
-  disable_food_loss: true #Preventing player from lost food.
-
-  player_health_level: 20 #Set the health of the player while joining the server.
-  player_food_level: 20 #Set the food of the player while joining the server.
-
-  enable_player_gamemode: true #Enable or Disable the gamemode of the player while joining the server.
-  set_player_gamemode: "adventure" #The gamemode will be set to the player while joining the server.
 
 commands: #List of all the Permission/Message of all the plugin command.
   reload:
@@ -85,12 +40,48 @@ commands: #List of all the Permission/Message of all the plugin command.
     permission-message: "&cYou don't have the required permission." #The message will be sent to the player who perform the command without the right permission.
     reload-message: "&aThe configuration file have been reloaded." #The message send while the command successfully done.
   spawn:
-    spawn_message: "§aYou have been teleported to the spawn."
+    spawn_message: "§aYou have been teleported to the spawn." #The message send while the command successfully done.
+
+usage-message:
+  reload: "&c&lIncorrect Usage: &c/lm-reload &c&lor &c/lobbymanager-reload" #Error message while you type: "/lobbymanager-reload <somethings>".
+
+server:
+  disable_default_join_message: true #Disable the default join message "Bearless joined the game".
+  disable_default_quit_message: true #Disable the default quit message "Bearless quit the game".
+
+  custom_join_message: "&a%player% &ejoin the lobby!" #Replace the default join message by a custom one.
+  custom_quit_message: "&a%player% &equit the lobby!" #Replace the default quit message by a custom one.
+
+  disable_pvp: true #Prevent players from pvp each other.
+  disable_entity_spawn: true #Disable the spawn of entity (Passive and Aggressive) like (Pig, Creeper, Zombie, Cow etc...).
+  disable_weather_change: true #Disable the change of the weather.
+
+  enable_join_player_spawn_loc: true #enable or disable the custom spawn for player while joining the server.
+
+  spawn_world_name: "world" #The name of the world where the spawn will be set.
+  spawn_X: 0 #The Horizontal position of the player.
+  spawn_Y: 65 #The Vertical position of the player.
+  spawn_Z: 0 #The Depth position of the player.
+  spawn_Yaw: 180 #The Horizontal tilt of the player.
+  spawn_Pitch: 0 #The Vertical tilt of the player.
+
+  teleport_onFall: 5 #This is the Vertical position where the player get teleported to the Spawn you set.
+
+player:
+  disable_fall_damage: true #Preventing players from taking fall damage.
+  disable_food_loss: true #Preventing players from lost food.
+
+  player_health_level: 20 #Set the health of the player while joining the server.
+  player_food_level: 20 #Set the food of the player while joining the server.
+
+  enable_player_gamemode: true #Enable or Disable the gamemode of the player while joining the server.
+  set_player_gamemode: "adventure" #The gamemode will be set to the player while joining the server.
+
+  tablist_header: "&aThis is a header\n &ewith a new lines" #Set the header of the tablist. TIP: type "\n" to get a new line.
+  tablist_footer: "&6This is a footer\n &2with a new lines" #Set the footer of the tablist. TIP: type "\n" to get a new line.
 ```
 
 ## The Discord
 If you need help you can join the community server, and we will help you.
 
-Discord: <a href="https://discord.gg/BpfRew4aR6">https://discord.gg/BpfRew4aR6</a>
-
-[![forthebadge](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNDMuOTY4NzcyODg4MTgzNiIgaGVpZ2h0PSIzNSIgdmlld0JveD0iMCAwIDE0My45Njg3NzI4ODgxODM2IDM1Ij48cmVjdCB3aWR0aD0iODcuOTY4NzY1MjU4Nzg5MDYiIGhlaWdodD0iMzUiIGZpbGw9IiM0NTQ1NDUiLz48cmVjdCB4PSI4Ny45Njg3NjUyNTg3ODkwNiIgd2lkdGg9IjU2LjAwMDAwNzYyOTM5NDUzIiBoZWlnaHQ9IjM1IiBmaWxsPSIjMTgwOGQ3Ii8+PHRleHQgeD0iNDMuOTg0MzgyNjI5Mzk0NTMiIHk9IjIxLjUiIGZvbnQtc2l6ZT0iMTIiIGZvbnQtZmFtaWx5PSInUm9ib3RvJywgc2Fucy1zZXJpZiIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgbGV0dGVyLXNwYWNpbmc9IjIiPlZFUlNJT048L3RleHQ+PHRleHQgeD0iMTE1Ljk2ODc2OTA3MzQ4NjMzIiB5PSIyMS41IiBmb250LXNpemU9IjEyIiBmb250LWZhbWlseT0iJ01vbnRzZXJyYXQnLCBzYW5zLXNlcmlmIiBmaWxsPSIjRkZGRkZGIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXdlaWdodD0iOTAwIiBsZXR0ZXItc3BhY2luZz0iMiI+MS4xMDwvdGV4dD48L3N2Zz4=)](https://forthebadge.com)
+Discord: <a href="https://discord.gg/Y2gaXtdrG9">https://discord.gg/Y2gaXtdrG9</a>
