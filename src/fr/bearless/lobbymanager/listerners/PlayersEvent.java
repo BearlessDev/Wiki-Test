@@ -1,6 +1,8 @@
 package fr.bearless.lobbymanager.listerners;
 
 import fr.bearless.lobbymanager.Main;
+import net.luckperms.api.LuckPermsProvider;
+import net.luckperms.api.model.user.User;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
@@ -14,7 +16,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 public class PlayersEvent implements Listener {
 
-    private Main plugin;
+    final Main plugin;
 
     public PlayersEvent(Main main){
         this.plugin = main;
@@ -24,8 +26,11 @@ public class PlayersEvent implements Listener {
     public void onJoin(PlayerJoinEvent e){
         Player player = e.getPlayer();
 
+        User user = LuckPermsProvider.get().getPlayerAdapter(Player.class).getUser(player);
+        String prefix = user.getCachedData().getMetaData().getPrefix().replace("&", "§");
+
         if(plugin.getConfig().getBoolean("server.disable_default_join_message")){
-            e.setJoinMessage(plugin.getConfig().getString("server.custom_join_message").replace("&", "§").replaceAll("%player%", player.getName()));
+            e.setJoinMessage(plugin.getConfig().getString("server.custom_join_message").replace("&", "§").replaceAll("%player%", player.getName()).replaceAll("%prefix%", prefix));
         }
 
         player.setHealth(plugin.getConfig().getInt("player.player_health_level"));
@@ -52,15 +57,15 @@ public class PlayersEvent implements Listener {
     public void onMove(PlayerMoveEvent e){
         Player player = e.getPlayer();
 
-        String world = plugin.getConfig().getString("world.spawn_world_name");
-        Double spawnX = plugin.getConfig().getDouble("world.spawn_X");
-        Double spawnY = plugin.getConfig().getDouble("world.spawn_Y");
-        Double spawnZ = plugin.getConfig().getDouble("world.spawn_Z");
-        int spawnYaw = plugin.getConfig().getInt("world.spawn_Yaw");
-        int spawnPitch = plugin.getConfig().getInt("world.spawn_Pitch");
+        String world = plugin.getConfig().getString("server.spawn_world_name");
+        Double spawnX = plugin.getConfig().getDouble("server.spawn_X");
+        Double spawnY = plugin.getConfig().getDouble("server.spawn_Y");
+        Double spawnZ = plugin.getConfig().getDouble("server.spawn_Z");
+        float spawnYaw = plugin.getConfig().getInt("server.spawn_Yaw");
+        float spawnPitch = plugin.getConfig().getInt("server.spawn_Pitch");
         Location loc = new Location(Bukkit.getWorld(world), spawnX, spawnY, spawnZ, spawnYaw, spawnPitch);
 
-        if(player.getLocation().getY() <=  plugin.getConfig().getInt("world.teleport_onFall")){
+        if(player.getLocation().getY() <= plugin.getConfig().getInt("servers.teleport_onFall")){
             player.teleport(loc);
         }
     }

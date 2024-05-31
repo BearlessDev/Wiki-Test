@@ -1,4 +1,4 @@
-# LobbyManager v1.0
+# LobbyManager v1.1
 
 ### Description:
 LobbyManager is a plugin that allows you to easily configure your server lobby just through a single configuration file that is easy to understand and modify.
@@ -26,12 +26,13 @@ Here the config file of the plugin:
 #   |_____\___/|_.__/|_.__/ \__, |_|  |_|\__,_|_| |_|\__,_|\__, |\___|_|
 #                           |___/                          |___/           
 # By Bearless
-# Version: 1.0
+# Version: 1.1
 #
 #
 # LobbyManager Placeholder:
 #
 # %player% --> return the name of the player.
+# %prefix% --> return the prefix of the Luckperms Group the player is in.
 #
 
 commands: #List of all the Permission/Message of all the plugin command.
@@ -49,8 +50,8 @@ server:
   disable_default_join_message: true #Disable the default join message "Bearless joined the game".
   disable_default_quit_message: true #Disable the default quit message "Bearless quit the game".
 
-  custom_join_message: "&a%player% &ejoin the lobby!" #Replace the default join message by a custom one.
-  custom_quit_message: "&a%player% &equit the lobby!" #Replace the default quit message by a custom one.
+  custom_join_message: "%prefix% %player% &ajoin the lobby!" #Replace the default join message by a custom one.
+  custom_quit_message: "%prefix% %player% &cquit the lobby!" #Replace the default quit message by a custom one.
 
   disable_pvp: true #Prevent players from pvp each other.
   disable_entity_spawn: true #Disable the spawn of entity (Passive and Aggressive) like (Pig, Creeper, Zombie, Cow etc...).
@@ -79,6 +80,7 @@ player:
 
   tablist_header: "&aThis is a header\n &ewith a new lines" #Set the header of the tablist. TIP: type "\n" to get a new line.
   tablist_footer: "&6This is a footer\n &2with a new lines" #Set the footer of the tablist. TIP: type "\n" to get a new line.
+  tablist_format: "%prefix% %player%"
 ```
 
 ## The Discord
