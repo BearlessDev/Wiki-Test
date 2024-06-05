@@ -54,9 +54,26 @@ player:
   player_health_level: 20 #Set the health of the player while joining the server.
   player_food_level: 20 #Set the food of the player while joining the server.
 
+  player_level: 2024 #The level of the player.
+
   enable_player_gamemode: true #Enable or Disable the gamemode of the player while joining the server.
   set_player_gamemode: "adventure" #The gamemode will be set to the player while joining the server.
 
   tablist_header: "&aThis is a header\n &ewith a new lines" #Set the header of the tablist. TIP: type "\n" to get a new line.
   tablist_footer: "&6This is a footer\n &2with a new lines" #Set the footer of the tablist. TIP: type "\n" to get a new line.
-  tablist_format: "%prefix% %player%"
+  tablist_format: "%prefix% %player%" #The display format of the PlayerList on the tablist.
+
+world:
+  block_break:
+    enable: true
+    permission: "lobbymanager.events.block.break"
+    permission_message: "&cYou didn't have the permission for &lBreaking Block"
+
+  block_place:
+    enable: true
+    permission: "lobbymanager.events.block.place"
+    permission_message: "&cYou didn't have the permission for &lPlacing Block"
+
+  disable_weather_change: true
+
+  disable_entity_spawn: true

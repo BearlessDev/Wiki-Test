@@ -1,6 +1,7 @@
 package fr.bearless.lobbymanager.listerners;
 
 import fr.bearless.lobbymanager.Main;
+import fr.bearless.lobbymanager.Main.Message;
 import net.luckperms.api.LuckPermsProvider;
 import net.luckperms.api.model.user.User;
 import org.bukkit.Bukkit;
@@ -30,16 +31,18 @@ public class PlayersEvent implements Listener {
         String prefix = user.getCachedData().getMetaData().getPrefix().replace("&", "§");
 
         if(plugin.getConfig().getBoolean("server.disable_default_join_message")){
-            e.setJoinMessage(plugin.getConfig().getString("server.custom_join_message").replace("&", "§").replaceAll("%player%", player.getName()).replaceAll("%prefix%", prefix));
+            e.setJoinMessage(plugin.getCustomJoinMessage(player));
         }
 
         player.setHealth(plugin.getConfig().getInt("player.player_health_level"));
         player.setFoodLevel(plugin.getConfig().getInt("player.player_food_level"));
 
+        player.setLevel(plugin.getConfig().getInt("player.player_level"));
+
         String world = plugin.getConfig().getString("world.spawn_world_name");
-        Double spawnX = plugin.getConfig().getDouble("world.spawn_X");
-        Double spawnY = plugin.getConfig().getDouble("world.spawn_Y");
-        Double spawnZ = plugin.getConfig().getDouble("world.spawn_Z");
+        double spawnX = plugin.getConfig().getDouble("world.spawn_X");
+        double spawnY = plugin.getConfig().getDouble("world.spawn_Y");
+        double spawnZ = plugin.getConfig().getDouble("world.spawn_Z");
         int spawnYaw = plugin.getConfig().getInt("world.spawn_Yaw");
         int spawnPitch = plugin.getConfig().getInt("world.spawn_Pitch");
         Location loc = new Location(Bukkit.getWorld(world), spawnX, spawnY, spawnZ, spawnYaw, spawnPitch);
@@ -54,15 +57,26 @@ public class PlayersEvent implements Listener {
     }
 
     @EventHandler
+    public void onQuit(PlayerQuitEvent e){
+        Player player = e.getPlayer();
+
+        if(plugin.getConfig().getBoolean("server.disable_default_quit_message")){
+            e.setQuitMessage(plugin.getConfig().getString("server.custom_quit_message")
+                    .replace("&", "§")
+                    .replaceAll("%player%", player.getName()));
+        }
+    }
+
+    @EventHandler
     public void onMove(PlayerMoveEvent e){
         Player player = e.getPlayer();
 
-        String world = plugin.getConfig().getString("server.spawn_world_name");
-        Double spawnX = plugin.getConfig().getDouble("server.spawn_X");
-        Double spawnY = plugin.getConfig().getDouble("server.spawn_Y");
-        Double spawnZ = plugin.getConfig().getDouble("server.spawn_Z");
-        float spawnYaw = plugin.getConfig().getInt("server.spawn_Yaw");
-        float spawnPitch = plugin.getConfig().getInt("server.spawn_Pitch");
+        String world = plugin.getConfig().getString("world.spawn_world_name");
+        double spawnX = plugin.getConfig().getDouble("world.spawn_X");
+        double spawnY = plugin.getConfig().getDouble("world.spawn_Y");
+        double spawnZ = plugin.getConfig().getDouble("world.spawn_Z");
+        float spawnYaw = plugin.getConfig().getInt("world.spawn_Yaw");
+        float spawnPitch = plugin.getConfig().getInt("world.spawn_Pitch");
         Location loc = new Location(Bukkit.getWorld(world), spawnX, spawnY, spawnZ, spawnYaw, spawnPitch);
 
         if(player.getLocation().getY() <= plugin.getConfig().getInt("servers.teleport_onFall")){
@@ -73,15 +87,6 @@ public class PlayersEvent implements Listener {
     @EventHandler
     public void onDeath(PlayerDeathEvent e){
         e.setDeathMessage("");
-    }
-
-    @EventHandler
-    public void onQuit(PlayerQuitEvent e){
-        Player player = e.getPlayer();
-
-        if(plugin.getConfig().getBoolean("server.disable_default_quit_message")){
-            e.setQuitMessage(plugin.getConfig().getString("server.custom_quit_message").replace("&", "§").replaceAll("%player%", player.getName()));
-        }
     }
 
     @EventHandler

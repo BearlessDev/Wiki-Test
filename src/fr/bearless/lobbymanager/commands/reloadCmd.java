@@ -6,11 +6,11 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class reloadCmd implements CommandExecutor {
+public class ReloadCmd implements CommandExecutor {
 
-    private Main plugin;
+    final Main plugin;
 
-    public reloadCmd(Main main) {
+    public ReloadCmd(Main main) {
         this.plugin = main;
     }
 

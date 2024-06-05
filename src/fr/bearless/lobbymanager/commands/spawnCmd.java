@@ -9,11 +9,11 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.Configuration;
 import org.bukkit.entity.Player;
 
-public class spawnCmd implements CommandExecutor {
+public class SpawnCmd implements CommandExecutor {
 
-    private Main plugin;
+    final Main plugin;
 
-    public spawnCmd(Main main) {
+    public SpawnCmd(Main main) {
         this.plugin = main;
     }
 
