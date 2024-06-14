@@ -37,26 +37,19 @@ public class Main extends JavaPlugin {
     public void onDisable() {
     }
 
+    public boolean isDefaultJoinMessageDisabled(){
+        return getConfig().getBoolean("server.disable_default_join_message");
+    }
+
+    public boolean isDefaultQuitMessageDisabled(){
+        return getConfig().getBoolean("server.disable_default_quit_message");
+    }
+
     public String getCustomJoinMessage(Player player){
         User user = LuckPermsProvider.get().getPlayerAdapter(Player.class).getUser(player);
         String prefix = user.getCachedData().getMetaData().getPrefix().replace("&", "§");
 
-        return ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("server.custom_quit_message"))
-                .replaceAll("%player%", player.getName())
-                .replaceAll("%prefix", prefix);
-    }
-
-    public static class Boolean{
-
-        public static boolean isJoinMessageDefault(){
-            return false;
-        }
-    }
-
-    public static class Message{
-
-        public static String getTestMessage(){
-            return "Bonjour";
-        }
+        return ChatColor.translateAlternateColorCodes('&', getConfig().getString("server.custom_join_message")
+                .replaceAll("%prefix%", prefix));
     }
 }

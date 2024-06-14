@@ -1,7 +1,6 @@
 package fr.bearless.lobbymanager.listerners;
 
 import fr.bearless.lobbymanager.Main;
-import fr.bearless.lobbymanager.Main.Message;
 import net.luckperms.api.LuckPermsProvider;
 import net.luckperms.api.model.user.User;
 import org.bukkit.Bukkit;
@@ -30,7 +29,9 @@ public class PlayersEvent implements Listener {
         User user = LuckPermsProvider.get().getPlayerAdapter(Player.class).getUser(player);
         String prefix = user.getCachedData().getMetaData().getPrefix().replace("&", "§");
 
-        if(plugin.getConfig().getBoolean("server.disable_default_join_message")){
+        if(prefix == null) return;
+
+        if(plugin.isDefaultJoinMessageDisabled()){
             e.setJoinMessage(plugin.getCustomJoinMessage(player));
         }
 
@@ -60,7 +61,7 @@ public class PlayersEvent implements Listener {
     public void onQuit(PlayerQuitEvent e){
         Player player = e.getPlayer();
 
-        if(plugin.getConfig().getBoolean("server.disable_default_quit_message")){
+        if(plugin.isDefaultQuitMessageDisabled()){
             e.setQuitMessage(plugin.getConfig().getString("server.custom_quit_message")
                     .replace("&", "§")
                     .replaceAll("%player%", player.getName()));
