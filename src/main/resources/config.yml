@@ -1,32 +1,3 @@
-# LobbyManager v2
-
-### Description:
-LobbyManager is a plugin that allows you to easily configure your server lobby just through a single configuration file that is easy to understand and modify.
-
-## Commands:
-- /lm-reload or /lobbymanager-reload:
-    - Allows you to reload the configuration file after modifying it to avoid restarting the entire server.
-
-- /lm-spawn, /lobbymanager-spawn or /spawn:
-    - Allows you to go back to the spawn set on the config.yml file.
-
-- /lm-setspawn, /lobbymanager-setspawn, /setspawn:
-    - Allow you to set the Spawn Location directly in the Config.yml file via a Command.
-
-## Permissions:
-- Reload Command:
-    - Default permission is: "lobbymanager.commands.reload" but you can change it on the config.yml file.
-
-- Spawn Command:
-    - This command don't require permission.
-
-- SetSpawn Command:
-    - Default permission is: "lobbymanager.commands.setspawn" but you can change it on the config.yml file.
-
-## Configuration file:
-Here the config file of the plugin:
-
-```Yaml
 #    _          _     _           __  __
 #   | |    ___ | |__ | |__  _   _|  \/  | __ _ _ __   __ _  __ _  ___ _ __
 #   | |   / _ \| '_ \| '_ \| | | | |\/| |/ _` | '_ \ / _` |/ _` |/ _ \ '__|
@@ -110,7 +81,3 @@ world: # World-specific settings and permissions.
     enable: true # Allows players to place blocks if they have the required permission.
     permission: "lobbymanager.events.block.place" # Permission required to place blocks.
     permission_message: "&cYou don't have permission for &lPlacing Block" # Message displayed if the player lacks permission to place blocks.
-```
-
-## Error Reporting
-If you have any problems [open an issue](https://github.com/BearlessDev/LobbyManager/issues) and me or the community will help you to find your answer.
